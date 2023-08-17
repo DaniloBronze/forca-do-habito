@@ -14,7 +14,7 @@ class EditClientController implements Controller
   {
     if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['acao'])) {
       $id = filter_input(INPUT_GET, 'id', FILTER_VALIDATE_INT);
-      $nome = filter_input(INPUT_POST, 'nome');
+      $nome = trim(filter_input(INPUT_POST, 'nome'));
       $idCategoria = filter_input(INPUT_POST, 'categoria', FILTER_VALIDATE_INT);
 
       if (empty($nome) || $idCategoria === false || $idCategoria === null) {
@@ -22,6 +22,8 @@ class EditClientController implements Controller
         echo '<script>window.location.href = "/painel";</script>';
         return;
       }
+
+      $nome = htmlentities($nome, ENT_QUOTES, 'UTF-8');
 
       $success = $this->repository->updateCliente($id, $nome, $idCategoria);
 
