@@ -28,8 +28,6 @@ class AddUserController implements Controller
         $user = new Academia($nome, $email, $senha, $perfil);
 
         if ($this->academiaRepository->add($user)) {
-          echo '<script>alert("Usuário cadastrado com sucesso!");';
-          echo '<script>window.location.href = "/painel";</script>';
         }
       }
     }
