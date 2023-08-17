@@ -13,7 +13,7 @@ class AddClientesController implements Controller
   public function processaRequisicao(): void
   {
     if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['acao'])) {
-      $nome = filter_input(INPUT_POST, 'nome');
+      $nome = trim(filter_input(INPUT_POST, 'nome'));
       $categoriaId = filter_input(INPUT_POST, 'categoria', FILTER_VALIDATE_INT);
 
       if (empty($nome)) {
@@ -27,7 +27,7 @@ class AddClientesController implements Controller
         echo 'window.location.href = "/painel";</script>';
         return;
       }
-
+      $nome = htmlentities($nome, ENT_QUOTES, 'UTF-8');
       if ($this->academiaRepository->addCliente($nome, $categoriaId)) {
 
         echo '<script>alert("Cliente cadastrado com sucesso!");';
