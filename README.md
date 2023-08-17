@@ -49,6 +49,12 @@ git clone https://github.com/DaniloBronze/forca-do-habito.git
 - Validação de formulários.
 - Armazenamento seguro de senhas.
 
+## 🚀 Para Usar:
+
+``
+admin@gmail.com:1234
+``
+
 ## 🤝 Contribuição
 
 Se desejar contribuir para o projeto, sinta-se à vontade para abrir uma _issue_ ou enviar um _pull request_.
