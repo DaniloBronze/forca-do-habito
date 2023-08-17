@@ -25,7 +25,7 @@ O projeto "Força do Hábito" visa oferecer uma plataforma simples e eficiente p
 
 1. Clone este repositório para o seu diretório local:
 
-``bash
+``
 git clone https://github.com/DaniloBronze/forca-do-habito.git
 ``
 
@@ -37,7 +37,7 @@ git clone https://github.com/DaniloBronze/forca-do-habito.git
 
 5. Configure o servidor web para apontar para a pasta public usando esse comando:
    
-``bash
+``
  php -S localhost:8080 -t public/
 ``
 
