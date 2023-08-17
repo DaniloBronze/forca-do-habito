@@ -11,7 +11,6 @@ if (empty($email) || empty($password)) {
 }
 
 try {
-    // Obtenha a conexão PDO do arquivo de conexão
     $pdo = getPdoConnection();
 
     $sql = "SELECT COUNT(*) FROM usuarios WHERE email = ?";
