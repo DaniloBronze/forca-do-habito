@@ -1,0 +1,15 @@
+{
+    "name": "dev/academia",
+    "autoload": {
+        "psr-4": {
+            "Dev\\Academia\\": "src/"
+        }
+    },
+    "authors": [
+        {
+            "name": "Danilo Bronze",
+            "email": "74279443+DaniloBronze@users.noreply.github.com"
+        }
+    ],
+    "require": {}
+}
