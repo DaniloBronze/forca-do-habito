@@ -26,14 +26,12 @@ class EditUserController implements Controller
     $senha = trim(filter_input(INPUT_POST, 'senha'));
     $perfil = filter_input(INPUT_POST, 'perfil');
 
-    // Verificar se algum campo obrigatório está vazio
     if (empty($nome) || empty($email) || empty($senha) || $perfil === false || $perfil === null) {
       echo '<script>alert("Preencha todos os campos");</script>';
       echo '<script>window.location.href = "/painel";</script>';
       return;
     }
 
-    // Utilizar htmlentities para evitar injeção de HTML e scripts
     $nome = htmlentities($nome, ENT_QUOTES, 'UTF-8');
     $email = htmlentities($email, ENT_QUOTES, 'UTF-8');
     $senha = htmlentities($senha, ENT_QUOTES, 'UTF-8');
