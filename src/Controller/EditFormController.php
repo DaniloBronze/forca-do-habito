@@ -16,7 +16,7 @@ class EditFormController implements Controller
   public function processaRequisicao(): void
   {
     $id = filter_input(INPUT_GET, 'id', FILTER_VALIDATE_INT);
-    /** @var ?Academia $video */
+    /** @var ?Academia $academia */
     $academia = null;
     if ($id !== false && $id !== null) {
       $academia = $this->repository->find($id);
