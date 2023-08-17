@@ -24,7 +24,7 @@ class EditUserController implements Controller
     $nome = trim(filter_input(INPUT_POST, 'nome'));
     $email = trim(filter_input(INPUT_POST, 'email'));
     $senha = trim(filter_input(INPUT_POST, 'senha'));
-    $perfil = filter_input(INPUT_POST, 'perfil'); // Manter o uso do FILTER_VALIDATE_INT
+    $perfil = filter_input(INPUT_POST, 'perfil');
 
     // Verificar se algum campo obrigatório está vazio
     if (empty($nome) || empty($email) || empty($senha) || $perfil === false || $perfil === null) {
