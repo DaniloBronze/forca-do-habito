@@ -21,19 +21,22 @@ class EditUserController implements Controller
       return;
     }
 
-    $nome = filter_input(INPUT_POST, 'nome');
-    $email = filter_input(INPUT_POST, 'email');
-    $senha = filter_input(INPUT_POST, 'senha');
-    $perfil = filter_input(INPUT_POST, 'perfil'); // Removendo o uso do FILTER_VALIDATE_INT
+    $nome = trim(filter_input(INPUT_POST, 'nome'));
+    $email = trim(filter_input(INPUT_POST, 'email'));
+    $senha = trim(filter_input(INPUT_POST, 'senha'));
+    $perfil = filter_input(INPUT_POST, 'perfil'); // Manter o uso do FILTER_VALIDATE_INT
 
     // Verificar se algum campo obrigatório está vazio
-    if (empty($nome) || empty($email) || empty($senha) || empty($perfil)) {
+    if (empty($nome) || empty($email) || empty($senha) || $perfil === false || $perfil === null) {
       echo '<script>alert("Preencha todos os campos");</script>';
       echo '<script>window.location.href = "/painel";</script>';
       return;
     }
 
-    // Remova o trim dos valores aqui, pois não faz sentido usar trim em valores que não são strings
+    // Utilizar htmlentities para evitar injeção de HTML e scripts
+    $nome = htmlentities($nome, ENT_QUOTES, 'UTF-8');
+    $email = htmlentities($email, ENT_QUOTES, 'UTF-8');
+    $senha = htmlentities($senha, ENT_QUOTES, 'UTF-8');
 
     $academia = new Academia($nome, $email, $senha, $perfil);
     $academia->setId($id);
