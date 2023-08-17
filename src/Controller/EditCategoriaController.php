@@ -14,13 +14,15 @@ class EditCategoriaController implements Controller
   {
     if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['acao'])) {
       $id = filter_input(INPUT_POST, 'id', FILTER_VALIDATE_INT);
-      $nomeCategoria = filter_input(INPUT_POST, 'categoria');
+      $nomeCategoria = trim(filter_input(INPUT_POST, 'categoria'));
 
       if (empty($nomeCategoria)) {
         echo '<script>alert("Preencha todos os campos");</script>';
         echo '<script>window.location.href = "/painel";</script>';
         return;
       }
+
+      $nomeCategoria = htmlentities($nomeCategoria, ENT_QUOTES, 'UTF-8');
 
       $success = $this->repository->updateCategoria($id, $nomeCategoria);
 
