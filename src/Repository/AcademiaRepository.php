@@ -17,7 +17,6 @@ class AcademiaRepository
   public function add(Academia $academia): bool
   {
     $email = $academia->email;
-
     $sqlCheck = "SELECT COUNT(*) FROM usuarios WHERE email = ?";
     $stmtCheck = $this->pdo->prepare($sqlCheck);
     $stmtCheck->execute([$email]);
@@ -41,6 +40,9 @@ class AcademiaRepository
       if ($result) {
         $id = $this->pdo->lastInsertId();
         $academia->setId(intval($id));
+
+        echo '<script>alert("Usuário cadastrado com sucesso!");';
+        echo 'window.location.href = "/painel";</script>';
       }
 
       return $result;
